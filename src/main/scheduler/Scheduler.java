@@ -100,7 +100,7 @@ public class Scheduler {
         // create_caregiver <username> <password>
         // check 1: the length for tokens need to be exactly 3 to include all information (with the operation name)
         if (tokens.length != 3) {
-            System.out.println("Please try again!");
+            System.out.println("Failed to create user.");
             return;
         }
         String username = tokens[1];
@@ -157,7 +157,7 @@ public class Scheduler {
         }
         // check 2: the length for tokens need to be exactly 3 to include all information (with the operation name)
         if (tokens.length != 3) {
-            System.out.println("Login failed");
+            System.out.println("Login failed.");
             return;
         }
         String username = tokens[1];
