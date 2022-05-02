@@ -119,7 +119,7 @@ public class Scheduler {
             currentCaregiver.saveToDB();
             System.out.println("Created user " + username);
         } catch (SQLException e) {
-            System.out.println("Failed to create user");
+            System.out.println("Failed to create user.");
             e.printStackTrace();
         }
     }
