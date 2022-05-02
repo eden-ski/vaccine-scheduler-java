@@ -117,9 +117,9 @@ public class Scheduler {
             currentCaregiver = new Caregiver.CaregiverBuilder(username, salt, hash).build();
             // save to caregiver information to our database
             currentCaregiver.saveToDB();
-            System.out.println(" *** Account created successfully *** ");
+            System.out.println("Created user " + username);
         } catch (SQLException e) {
-            System.out.println("Create failed");
+            System.out.println("Failed to create user");
             e.printStackTrace();
         }
     }
@@ -152,12 +152,12 @@ public class Scheduler {
         // login_caregiver <username> <password>
         // check 1: if someone's already logged-in, they need to log out first
         if (currentCaregiver != null || currentPatient != null) {
-            System.out.println("Already logged-in!");
+            System.out.println("User already logged in");
             return;
         }
         // check 2: the length for tokens need to be exactly 3 to include all information (with the operation name)
         if (tokens.length != 3) {
-            System.out.println("Please try again!");
+            System.out.println("Login failed");
             return;
         }
         String username = tokens[1];
@@ -167,14 +167,14 @@ public class Scheduler {
         try {
             caregiver = new Caregiver.CaregiverGetter(username, password).get();
         } catch (SQLException e) {
-            System.out.println("Error occurred when logging in");
+            System.out.println("Login failed");
             e.printStackTrace();
         }
         // check if the login was successful
         if (caregiver == null) {
-            System.out.println("Please try again!");
+            System.out.println("Login failed");
         } else {
-            System.out.println("Caregiver logged in as: " + username);
+            System.out.println("Logged in as: " + username);
             currentCaregiver = caregiver;
         }
     }
