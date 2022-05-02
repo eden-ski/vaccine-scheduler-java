@@ -152,7 +152,7 @@ public class Scheduler {
         // login_caregiver <username> <password>
         // check 1: if someone's already logged-in, they need to log out first
         if (currentCaregiver != null || currentPatient != null) {
-            System.out.println("User already logged in");
+            System.out.println("User already logged in.");
             return;
         }
         // check 2: the length for tokens need to be exactly 3 to include all information (with the operation name)
@@ -167,12 +167,12 @@ public class Scheduler {
         try {
             caregiver = new Caregiver.CaregiverGetter(username, password).get();
         } catch (SQLException e) {
-            System.out.println("Login failed");
+            System.out.println("Login failed.");
             e.printStackTrace();
         }
         // check if the login was successful
         if (caregiver == null) {
-            System.out.println("Login failed");
+            System.out.println("Login failed.");
         } else {
             System.out.println("Logged in as: " + username);
             currentCaregiver = caregiver;
