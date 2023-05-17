@@ -115,10 +115,9 @@ public class Scheduler {
         // create the caregiver
         try {
             // automatically login the newly created caregiver
-            currentCaregiver = new Caregiver.CaregiverBuilder(username, salt, hash).build(); 
-            currentPatient = null;
+            Caregiver caregiver = new Caregiver.CaregiverBuilder(username, salt, hash).build(); 
             // save to caregiver information to our database
-            currentCaregiver.saveToDB();
+            caregiver.saveToDB();
             System.out.println("Created user " + username);
         } catch (SQLException e) {
             System.out.println("Failed to create user.");
