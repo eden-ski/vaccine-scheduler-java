@@ -114,7 +114,6 @@ public class Scheduler {
         byte[] hash = Util.generateHash(password, salt);
         // create the caregiver
         try {
-            // automatically login the newly created caregiver
             Caregiver caregiver = new Caregiver.CaregiverBuilder(username, salt, hash).build(); 
             // save to caregiver information to our database
             caregiver.saveToDB();
