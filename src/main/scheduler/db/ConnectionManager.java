@@ -6,11 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
-    private final String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private final String connectionUrl = "jdbc:sqlserver://" + System.getenv("Server") +
-            ".database.windows.net:1433;database=" + System.getenv("DBName");
-    private final String userName = System.getenv("UserID");
-    private final String userPass = System.getenv("Password");
+    private final String connectionUrl = "jdbc:sqlite:" + System.getenv("DBPath");
 
     private Connection con = null;
 
@@ -24,7 +20,7 @@ public class ConnectionManager {
 
     public Connection createConnection() {
         try {
-            con = DriverManager.getConnection(connectionUrl, userName, userPass);
+            con = DriverManager.getConnection(connectionUrl);
         } catch (SQLException e) {
             e.printStackTrace();
         }
