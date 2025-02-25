@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
+    private final String driverName = "org.sqlite.JDBC";
     private final String connectionUrl = "jdbc:sqlite:" + System.getenv("DBPath");
 
     private Connection con = null;
